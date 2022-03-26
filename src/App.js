@@ -24,7 +24,7 @@ const Main = styled.main`
 `;
 
 function App() {
-  const userIsLogged = false;
+  const userIsLogged = true;
 
   return (
     <Router>

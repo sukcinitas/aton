@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { RoundImageWrapper } from "../shared/Image";
@@ -9,14 +10,19 @@ import { HorizontalDirWrapper } from "../shared/Wrapper";
 import { StyledCloseIcon, StyledEditIcon } from "../shared/MaterialIcons";
 
 const StyledHeader = styled.header`
-  padding: 10px;
+  padding: 10px 20px;
   width: 100%;
   background-color: var(--xiketic-transparent);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: fixed;
   top: 0px;
   z-index: 2;
+
+  & ${InverseButton} {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
 `;
 
 const HeaderRoundImageWrapper = styled(RoundImageWrapper)`
@@ -69,11 +75,13 @@ function UserModal({ isVisible, close }) {
 }
 
 function Header() {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <StyledHeader>
       <UserModal close={() => setIsModalOpen(false)} isVisible={isModalOpen} />
+      <InverseButton onClick={() => navigate("/")}>Home</InverseButton>
       <HeaderRoundImageWrapper onClick={() => setIsModalOpen(true)} />
     </StyledHeader>
   );
