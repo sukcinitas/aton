@@ -1,31 +1,32 @@
 import GlobalStyles from "./shared/Global";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
 
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
-import UserCard from "./components/UserCard";
-import GroupsList from "./components/GroupsList";
-import WaitingBox from "./components/WaitingBox";
-import WeekBox from "./components/WeekBox";
 import Header from "./components/Header";
-import AssignDayCardsBox from "./components/AssignDayCardsBox";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+
+const Main = styled.main`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 function App() {
   return (
-    <>
+    <Router>
+      <GlobalStyles />
       <Header />
-      <div>
-        <GlobalStyles />
-        <LoginForm />
-        <RegisterForm />
-        <UserCard />
-        <UserCard selectStyle />
-        <UserCard inviteStyle />
-        <GroupsList />
-        <WaitingBox />
-        <WeekBox />
-        <AssignDayCardsBox />
-      </div>
-    </>
+      <Main>
+        <Routes>
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+          {/* <Route exact path="/" component={} /> */}
+        </Routes>
+      </Main>
+    </Router>
   );
 }
 
