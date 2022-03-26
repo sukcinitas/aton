@@ -63,7 +63,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        background-color: aliceblue;
+        background-color: #f9f9f959;
+    }
+
+    html, body, #root {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
     }
 
     :root {

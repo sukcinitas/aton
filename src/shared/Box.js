@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { Button } from "./Buttons";
 import { ItemHeading } from "./Headings";
@@ -15,38 +15,29 @@ export const Box = styled.div`
   max-width: 320px;
   position: relative;
   background-color: var(--white);
-
-  ${(props) =>
-    props.clickable &&
-    css`
-      &:hover {
-        cursor: pointer;
-      }
-    `}
 `;
 
 export const ListBox = styled(Box)`
+  padding: 0;
+  border-radius: 0;
   row-gap: 0;
   max-width: 100%;
 `;
 
 export const HorizontalBox = styled(Box)`
   flex-direction: row;
-  column-gap: 0;
-  row: gap: 0;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row: gap: 10px;
   width: 100%;
   box-shadow: none;
   max-width: 100%;
+  border: none;
   border-radius: 0;
-
-  & ${Box} {
-    box-shadow: none;
-    min-width: 200px;
-  }
-
-  & ${Box}:not(:last-child) {
-    border-right: none;
-  }
+  padding: 0;
+  background-color: transparent;
+  align-items: stretch;
+  justify-content: flex-start;
 `;
 
 export const HorizontalListBox = styled(Box)`

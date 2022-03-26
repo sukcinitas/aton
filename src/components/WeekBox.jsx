@@ -4,12 +4,34 @@ import styled from "styled-components";
 import { SmallBox, HorizontalBox } from "../shared/Box";
 import { ApprovedTag, PendingTag } from "../shared/Tag";
 import { ButtonsWrapper } from "../shared/Buttons";
-import { SmallHeading } from "../shared/Headings";
+import { SmallHeading, ItemHeading } from "../shared/Headings";
 import { DateDetail } from "../shared/Details";
 import {
   StyledCancelIcon,
   StyledCheckCircleIcon,
 } from "../shared/MaterialIcons";
+
+const WeekHorizontalBox = styled(HorizontalBox)`
+  column-gap: 0px;
+  row: gap: 0px;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  & ${SmallBox} {
+    box-shadow: none;
+    padding: 30px 20px 20px;
+    min-width: 140px;
+    flex: 0 0 140px;
+  }
+
+  & ${SmallBox}:not(:last-child) {
+    border-right: none;
+  }
+
+  & ${ItemHeading} {
+    margin-right: auto;
+  }
+`;
 
 const Buttons = styled(ButtonsWrapper)`
   position: absolute;
@@ -39,7 +61,8 @@ function DayCard({ approved }) {
 
 function WeekBox() {
   return (
-    <HorizontalBox>
+    <WeekHorizontalBox>
+      <ItemHeading>A task I</ItemHeading>
       <DayCard approved />
       <DayCard approved />
       <DayCard />
@@ -47,7 +70,7 @@ function WeekBox() {
       <DayCard />
       <DayCard />
       <DayCard />
-    </HorizontalBox>
+    </WeekHorizontalBox>
   );
 }
 

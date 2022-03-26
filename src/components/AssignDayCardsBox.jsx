@@ -1,30 +1,46 @@
 import React from "react";
 import styled from "styled-components";
 
-import { SmallBox, Box } from "../shared/Box";
+import { SmallBox, HorizontalBox } from "../shared/Box";
 import { Button } from "../shared/Buttons";
 import { DayDetail } from "../shared/Details";
 import { ButtonsWrapper } from "../shared/Buttons";
 
 const AssignDayCardSmallBox = styled(SmallBox)`
-  padding-top: 60px;
+  padding: 0;
+  padding-top: 30px;
+`;
+
+const AssignDayButtonsWrapper = styled(ButtonsWrapper)`
+  flex-direction: row;
+  column-gap: 1px;
+  row-gap: 1px;
+
+  & ${Button} {
+    border-radius: 0;
+  }
+`;
+
+const AssignDayHorizontalBox = styled(HorizontalBox)`
+  flex-direction: column;
+  flex-wrap: none;
 `;
 
 function AssignDayCard({ primary, backup }) {
   return (
     <AssignDayCardSmallBox>
       <DayDetail>Monday</DayDetail>
-      <ButtonsWrapper>
+      <AssignDayButtonsWrapper>
         <Button>Assign primary</Button>
         <Button>Assign backup</Button>
-      </ButtonsWrapper>
+      </AssignDayButtonsWrapper>
     </AssignDayCardSmallBox>
   );
 }
 
 function AssignDayCardsBox() {
   return (
-    <Box>
+    <AssignDayHorizontalBox>
       <AssignDayCard />
       <AssignDayCard />
       <AssignDayCard />
@@ -32,7 +48,7 @@ function AssignDayCardsBox() {
       <AssignDayCard />
       <AssignDayCard />
       <AssignDayCard />
-    </Box>
+    </AssignDayHorizontalBox>
   );
 }
 

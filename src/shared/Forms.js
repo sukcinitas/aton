@@ -36,6 +36,7 @@ export const Form = styled(Box).attrs({
 })`
   max-width: 340px;
   padding: 60px;
+  margin: 0 auto;
 `;
 
 export const FormWrapper = styled.div`

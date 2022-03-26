@@ -23,6 +23,7 @@ export const DateDetail = styled(Detail)`
 `;
 
 export const DayDetail = styled(Detail)`
+  height: 30px;
   padding: 6px;
   font-size: 18px;
   position: absolute;

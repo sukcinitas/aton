@@ -32,6 +32,11 @@ function GroupList() {
       <GroupListItem />
       <GroupListItem />
       <GroupListItem thereIsAnInvitation />
+      <GroupListItem />
+      <GroupListItem />
+      <GroupListItem />
+      <GroupListItem />
+      <GroupListItem />
     </ListBox>
   );
 }

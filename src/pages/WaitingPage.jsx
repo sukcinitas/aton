@@ -1,14 +1,14 @@
 import React from "react";
 
 import { PageWrapperSingleElement } from "../shared/PageWrapper";
-import LoginForm from "../components/LoginForm";
+import WaitingBox from "../components/WaitingBox";
 
-function LoginPage() {
+function WaitingPage() {
   return (
     <PageWrapperSingleElement>
-      <LoginForm />
+      <WaitingBox />
     </PageWrapperSingleElement>
   );
 }
 
-export default LoginPage;
+export default WaitingPage;

@@ -9,6 +9,16 @@ export const Heading = styled.h1`
   font-family: var(--title-font);
 `;
 
+export const Subheading = styled.h2`
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--xiketic);
+  margin-bottom: 20px;
+  font-family: var(--title-font);
+  margin-top: 60px;
+`;
+
 export const ItemHeading = styled.h3`
   font-size: 18px;
   font-weight: 700;
