@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from "./shared/Global";
+
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
+import UserCard from "./components/UserCard";
+import GroupsList from "./components/GroupsList";
+import WaitingBox from "./components/WaitingBox";
+import WeekBox from "./components/WeekBox";
+import Header from "./components/Header";
+import AssignDayCardsBox from "./components/AssignDayCardsBox";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div>
+        <GlobalStyles />
+        <LoginForm />
+        <RegisterForm />
+        <UserCard />
+        <UserCard selectStyle />
+        <UserCard inviteStyle />
+        <GroupsList />
+        <WaitingBox />
+        <WeekBox />
+        <AssignDayCardsBox />
+      </div>
+    </>
   );
 }
 
