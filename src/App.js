@@ -1,5 +1,10 @@
 import GlobalStyles from "./shared/Global";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import styled from "styled-components";
 
 import Header from "./components/Header";
@@ -19,23 +24,64 @@ const Main = styled.main`
 `;
 
 function App() {
+  const userIsLogged = false;
+
   return (
     <Router>
       <GlobalStyles />
       <Header />
       <Main>
         <Routes>
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="groups" element={<GroupsPage />} />
-          <Route path="waiting" element={<WaitingPage />} />
-          <Route path="users" element={<UsersPage />} />
-          <Route path="group" element={<GroupPage />} />
-          <Route path="add-task" element={<AddTaskPage />} />
+          <Route
+            path="register"
+            element={
+              userIsLogged ? <Navigate replace to="/" /> : <RegisterPage />
+            }
+          />
+          <Route
+            path="login"
+            element={userIsLogged ? <Navigate replace to="/" /> : <LoginPage />}
+          />
+          <Route
+            path="groups"
+            element={
+              !userIsLogged ? <Navigate replace to="/login" /> : <GroupsPage />
+            }
+          />
+          <Route
+            path="waiting"
+            element={
+              !userIsLogged ? <Navigate replace to="/login" /> : <WaitingPage />
+            }
+          />
+          <Route
+            path="users"
+            element={
+              !userIsLogged ? <Navigate replace to="/login" /> : <UsersPage />
+            }
+          />
+          <Route
+            path="group"
+            element={
+              !userIsLogged ? <Navigate replace to="/login" /> : <GroupPage />
+            }
+          />
+          <Route
+            path="add-task"
+            element={
+              !userIsLogged ? <Navigate replace to="/login" /> : <AddTaskPage />
+            }
+          />
           <Route
             exact
             path="/"
-            element={<HomePage group="bebriukai" hasInvitationToAGroup />}
+            element={
+              !userIsLogged ? (
+                <Navigate replace to="/login" />
+              ) : (
+                <HomePage group="bebriukai" hasInvitationToAGroup />
+              )
+            }
           />
         </Routes>
       </Main>
