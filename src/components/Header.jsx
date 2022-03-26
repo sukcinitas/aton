@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
   top: 0px;
   z-index: 2;
 
-  & ${InverseButton} {
+  & ${InverseButton}, ${Button} {
     padding: 4px 10px;
     font-size: 12px;
   }
