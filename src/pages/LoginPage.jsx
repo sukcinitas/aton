@@ -3,10 +3,10 @@ import React from "react";
 import { PageWrapperSingleElement } from "../shared/PageWrapper";
 import LoginForm from "../components/LoginForm";
 
-function LoginPage() {
+function LoginPage({ addGeneralInfo }) {
   return (
     <PageWrapperSingleElement>
-      <LoginForm />
+      <LoginForm addGeneralInfo={addGeneralInfo} />
     </PageWrapperSingleElement>
   );
 }
