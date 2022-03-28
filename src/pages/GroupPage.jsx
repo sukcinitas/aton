@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 
+import { UserContext } from "../App";
 import PageWrapper from "../shared/PageWrapper";
 import { Heading, Subheading } from "../shared/Headings";
 import UserCardsBox from "../components/UserCardsBox";
@@ -13,12 +15,29 @@ const Wrapper = styled(ButtonsWrapper)`
 `;
 
 function GroupPage() {
-  let navigate = useNavigate();
+  const [group, setGroup] = useState({});
+  const [users, setUsers] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const {
+    token,
+    user: { group_id },
+  } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(`api/show_group?token=${token}&group_id=${group_id}`)
+      .then(({ data: { group, users, tasks } }) => {
+        setGroup(group);
+        setUsers(users);
+        setTasks(tasks);
+      });
+  });
 
   return (
     <PageWrapper>
       <Wrapper>
-        <Heading>Groupname</Heading>
+        <Heading>{group.name}</Heading>
         <Button onClick={() => navigate("/add-task")}>Add task</Button>
         <InverseButton onClick={() => navigate("/users")}>
           Invite user
@@ -26,7 +45,7 @@ function GroupPage() {
       </Wrapper>
 
       <Subheading>Members</Subheading>
-      <UserCardsBox type="small" />
+      <UserCardsBox type="small" user={users} />
 
       <Subheading>Tasks</Subheading>
       <WeekBox />

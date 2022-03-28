@@ -17,6 +17,7 @@ import GroupPage from "./pages/GroupPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AddTaskPage from "./pages/AddTaskPage";
+import CreateGroupPage from "./pages/CreateGroupPage";
 
 const Main = styled.main`
   height: 100%;
@@ -36,7 +37,7 @@ function App() {
       username: "sukcinitas",
       profile: "Something",
       group_id: null,
-      has_joined: true,
+      has_joined: false,
       inviting_groups: [],
     },
     schedule: [],
@@ -116,6 +117,16 @@ function App() {
                   <Navigate replace to="/login" />
                 ) : (
                   <AddTaskPage />
+                )
+              }
+            />
+            <Route
+              path="/create-group"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <CreateGroupPage />
                 )
               }
             />
