@@ -14,6 +14,10 @@ export const Button = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  &:disabled {
+    opacity: 0.7;
+  }
 `;
 
 export const InverseButton = styled(Button)`

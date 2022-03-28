@@ -24,12 +24,12 @@ const Main = styled.main`
 `;
 
 function App() {
-  const userIsLogged = true;
+  const userIsLogged = false;
 
   return (
     <Router>
       <GlobalStyles />
-      <Header />
+      {userIsLogged && <Header />}
       <Main>
         <Routes>
           <Route

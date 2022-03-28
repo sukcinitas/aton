@@ -4,8 +4,13 @@ export const Detail = styled.span`
   font-size: 12px;
   color: var(--english-violet);
 
-  & a {
+  & a,
+  & a:visited,
+  & a:hover,
+  & a:focus,
+  & a:active {
     text-decoration: underline;
+    color: var(--english-violet);
   }
 `;
 

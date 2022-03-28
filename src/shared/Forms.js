@@ -8,7 +8,9 @@ export const Input = styled.input`
   border: 2px solid var(--laurel-green);
   border-radius: 3px;
   font-family: "Montserrat", serif;
-  font-size: 14px;
+  font-size: 12px;
+  font-family: var(--text-font);
+  color: var(--xiketic);
 
   &:hover {
     border: 2px solid var(--english-violet);
@@ -36,7 +38,7 @@ export const Form = styled(Box).attrs({
 })`
   max-width: 340px;
   padding: 60px;
-  margin: 0 auto;
+  margin: 50px auto;
 `;
 
 export const FormWrapper = styled.div`
