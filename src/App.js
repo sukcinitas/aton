@@ -1,5 +1,5 @@
 import GlobalStyles from "./shared/Global";
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -24,95 +24,116 @@ const Main = styled.main`
   overflow-y: scroll;
 `;
 
+export const UserContext = createContext({});
+
 function App() {
-  const [generalInfo, setGeneralInfo] = useState({});
+  const [generalInfo, setGeneralInfo] = useState({
+    token:
+      '{"user_id": "N3Lze2fxg8NUMr5-ET8ZV2ETvF5lwQ62uRRqaIqfeQc", "signature": "649ce5fddcf617e8c49c3a1057c0bfe54a778b6b1d52b30fa723381e2bba09238bc8dde7ac542b10b451dde32f2e671bd86d5038b4451926f58f80bfd98020187f2446af3a5dface"}',
+    message: "user logged in",
+    user: {
+      id: "N3Lze2fxg8NUMr5-ET8ZV2ETvF5lwQ62uRRqaIqfeQc",
+      username: "sukcinitas",
+      profile: "Something",
+      group_id: null,
+      has_joined: true,
+      inviting_groups: [],
+    },
+    schedule: [],
+  });
 
   return (
-    <Router>
-      <GlobalStyles />
-      {generalInfo.token && <Header />}
-      <Main>
-        <Routes>
-          <Route
-            path="register"
-            element={
-              generalInfo.token ? <Navigate replace to="/" /> : <RegisterPage />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              generalInfo.token ? (
-                <Navigate replace to="/" />
-              ) : (
-                <LoginPage addGeneralInfo={setGeneralInfo} />
-              )
-            }
-          />
-          <Route
-            path="groups"
-            element={
-              !generalInfo.token ? (
-                <Navigate replace to="/login" />
-              ) : (
-                <GroupsPage />
-              )
-            }
-          />
-          <Route
-            path="waiting"
-            element={
-              !generalInfo.token ? (
-                <Navigate replace to="/login" />
-              ) : (
-                <WaitingPage />
-              )
-            }
-          />
-          <Route
-            path="users"
-            element={
-              !generalInfo.token ? (
-                <Navigate replace to="/login" />
-              ) : (
-                <UsersPage />
-              )
-            }
-          />
-          <Route
-            path="group"
-            element={
-              !generalInfo.token ? (
-                <Navigate replace to="/login" />
-              ) : (
-                <GroupPage />
-              )
-            }
-          />
-          <Route
-            path="add-task"
-            element={
-              !generalInfo.token ? (
-                <Navigate replace to="/login" />
-              ) : (
-                <AddTaskPage />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/"
-            element={
-              !generalInfo.token ? (
-                <Navigate replace to="/login" />
-              ) : (
-                <HomePage group="bebriukai" hasInvitationToAGroup />
-              )
-            }
-          />
-        </Routes>
-      </Main>
-    </Router>
+    <UserContext.Provider value={generalInfo}>
+      <Router>
+        <GlobalStyles />
+        {generalInfo.token && <Header />}
+        <Main>
+          <Routes>
+            <Route
+              path="register"
+              element={
+                generalInfo.token ? (
+                  <Navigate replace to="/" />
+                ) : (
+                  <RegisterPage />
+                )
+              }
+            />
+            <Route
+              path="login"
+              element={
+                generalInfo.token ? (
+                  <Navigate replace to="/" />
+                ) : (
+                  <LoginPage addGeneralInfo={setGeneralInfo} />
+                )
+              }
+            />
+            <Route
+              path="groups"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <GroupsPage />
+                )
+              }
+            />
+            <Route
+              path="waiting"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <WaitingPage />
+                )
+              }
+            />
+            <Route
+              path="users"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <UsersPage />
+                )
+              }
+            />
+            <Route
+              path="group"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <GroupPage />
+                )
+              }
+            />
+            <Route
+              path="add-task"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <AddTaskPage />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/"
+              element={
+                !generalInfo.token ? (
+                  <Navigate replace to="/login" />
+                ) : (
+                  <HomePage />
+                )
+              }
+            />
+          </Routes>
+        </Main>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
